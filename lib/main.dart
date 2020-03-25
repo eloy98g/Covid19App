@@ -37,25 +37,73 @@ Future<Global> cargarGlobal()async{
 
 class GlobalStats extends StatelessWidget{
 
-  Widget SlotGlobal(int data, String text){
+  Widget TextSlotGlobal(String text, Color color){
+    return Text(
+      text,
+      style: TextStyle(
+          color: color,
+          fontWeight: FontWeight.bold,
+          fontSize: 20
+
+      ),
+    );
+  }
+
+  Widget SlotGlobal(String data, String text, Color color){
     return Column(
       children:[
         Expanded(
           child: Column(
             children:[
-              Text(data.toString()),
+              TextSlotGlobal(data, color),
             ],
           ),
         ),
         Expanded(
           child: Column(
             children:[
-              Text(text),
+              TextSlotGlobal(text, color),
             ],
           ),
         ),
       ],
     );
+  }
+
+  Widget DoubleSlotGlobal(String topData, String topText, String botData, String botText, Color color, bool CompleteRow){
+    if(CompleteRow == false){
+      return Container(
+        margin: const EdgeInsets.all(10.0),
+        child: Container(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children:[
+              Expanded(
+                child: SlotGlobal(topData, topText, color),
+              ),
+              Expanded(
+                child: SlotGlobal(botData, botText, color),
+              ),
+            ],
+          ),
+        ),
+      );
+    }else{
+      return Container(
+        margin: const EdgeInsets.all(10.0),
+        child: Container(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children:[
+              Expanded(
+                child: SlotGlobal(topData, topText, color),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
   }
 
   Widget rendGlobalStats(BuildContext context,  AsyncSnapshot<Global> snapshot){
@@ -68,45 +116,40 @@ class GlobalStats extends StatelessWidget{
         mainAxisAlignment: MainAxisAlignment.center,
         children:[
           Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children:[
-                Expanded(
-                  child: SlotGlobal(post.results[0].totalCases, 'TOTAL INFECTED'),
-                ),
-                Expanded(
-                  child: SlotGlobal(post.results[0].total_new_cases_today, 'NEW CASES TODAY'),
-                ),
-              ],
+            child:DoubleSlotGlobal(
+              post.results[0].totalCases.toString(),
+              'TOTAL INFECTED',
+              '+'+post.results[0].total_new_cases_today.toString(),
+              'NEW CASES TODAY',
+              Colors.blue,
+              false,
             ),
           ),
           Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children:[
-                Expanded(
-                  child: SlotGlobal(post.results[0].total_deaths, 'TOTAL DEATHS'),
-                ),
-                Expanded(
-                  child: SlotGlobal(post.results[0].total_new_deaths_today, 'NEW DEATHS TODAY'),
-                ),
-              ],
+            child: DoubleSlotGlobal(
+              post.results[0].total_deaths.toString(),
+              'TOTAL DEATHS',
+              '+'+post.results[0].total_new_deaths_today.toString(),
+              'NEW DEATHS TODAY',
+              Colors.red,
+              false,
             ),
           ),
           Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children:[
-                Expanded(
-                  child: SlotGlobal(post.results[0].total_recovered, 'TOTAL RECOVERED'),
-                ),
-              ],
+            child: DoubleSlotGlobal(
+              post.results[0].total_recovered.toString(),
+              'TOTAL RECOVERED',
+              '',
+              '',
+              Colors.green,
+              true,
             ),
           ),
         ],
       );
     }else{
-      return CircularProgressIndicator();
+      return CircularProgressIndicator(
+      );
     }
   }
 

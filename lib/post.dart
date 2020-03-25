@@ -44,7 +44,7 @@ class Country{
 
 }
 class Results{
-  final int totalCases;
+  final int totalCases;//
   final int total_recovered;
   final int total_unresolved;
   final int total_deaths;

@@ -4,15 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:covidapp/post.dart';
 import 'package:flag/flag.dart';
-import 'package:covidapp/details.dart';
 import 'dart:async' show Future;
 
 
 void main(){
   runApp(Aplicacion());
 }
-
-var debug;
 
 class Aplicacion extends StatelessWidget{
   @override
@@ -36,15 +33,13 @@ Future<Global> cargarGlobal()async{
 }
 
 class GlobalStats extends StatelessWidget{
-
   Widget TextSlotGlobal(String text, Color color){
     return Text(
       text,
       style: TextStyle(
-          color: color,
-          fontWeight: FontWeight.bold,
-          fontSize: 20
-
+        color: color,
+        fontWeight: FontWeight.bold,
+        fontSize: 18.5
       ),
     );
   }
@@ -73,16 +68,22 @@ class GlobalStats extends StatelessWidget{
   Widget DoubleSlotGlobal(String topData, String topText, String botData, String botText, Color color, bool CompleteRow){
     if(CompleteRow == false){
       return Container(
-        margin: const EdgeInsets.all(10.0),
+        padding: new EdgeInsets.all(15.0),
+        decoration: BoxDecoration(border: Border(bottom: BorderSide(width: 1.0)), color: Colors.cyan[100],),
         child: Container(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children:[
               Expanded(
-                child: SlotGlobal(topData, topText, color),
+                child: Container(
+                  child: SlotGlobal(topData, topText, color),
+                  decoration: BoxDecoration(border: Border(right: BorderSide(width: 1.0))),
+                )
               ),
               Expanded(
-                child: SlotGlobal(botData, botText, color),
+                child: Container(
+                  child: SlotGlobal(botData, botText, color),
+                )
               ),
             ],
           ),
@@ -90,7 +91,8 @@ class GlobalStats extends StatelessWidget{
       );
     }else{
       return Container(
-        margin: const EdgeInsets.all(10.0),
+        decoration: BoxDecoration(color: Colors.cyan[100],),
+        padding: new EdgeInsets.all(15.0),
         child: Container(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -103,7 +105,6 @@ class GlobalStats extends StatelessWidget{
         ),
       );
     }
-
   }
 
   Widget rendGlobalStats(BuildContext context,  AsyncSnapshot<Global> snapshot){
@@ -118,9 +119,9 @@ class GlobalStats extends StatelessWidget{
           Expanded(
             child:DoubleSlotGlobal(
               post.results[0].totalCases.toString(),
-              'TOTAL INFECTED',
+              'GLOBAL INFECTED',
               '+'+post.results[0].total_new_cases_today.toString(),
-              'NEW CASES TODAY',
+              'CASES TODAY',
               Colors.blue,
               false,
             ),
@@ -128,9 +129,9 @@ class GlobalStats extends StatelessWidget{
           Expanded(
             child: DoubleSlotGlobal(
               post.results[0].total_deaths.toString(),
-              'TOTAL DEATHS',
+              'GLOBAL DEATHS',
               '+'+post.results[0].total_new_deaths_today.toString(),
-              'NEW DEATHS TODAY',
+              'DEATHS TODAY',
               Colors.red,
               false,
             ),

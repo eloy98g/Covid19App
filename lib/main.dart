@@ -6,6 +6,7 @@ import 'package:covidapp/post.dart';
 import 'package:flag/flag.dart';
 import 'dart:async' show Future;
 import 'package:covidapp/GlobalStats.dart';
+import 'package:covidapp/Countries.dart';
 
 
 void main(){
@@ -49,10 +50,10 @@ class Inicio extends StatelessWidget {
               thickness:3,
             ),
             Expanded(
-              child: Container(
-                color: Colors.yellow,
-                child: Text('Work in progress'),
-              )
+                child: FutureBuilder<List<Country>>(
+                  builder: Countries().topCountries,
+                  future: cargarCountryList(),
+                )
             ),
           ],
         )

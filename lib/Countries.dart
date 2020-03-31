@@ -5,47 +5,40 @@ import 'package:covidapp/post.dart';
 import 'package:flag/flag.dart';
 import 'dart:async' show Future;
 
-Future<Country> cargarTop(String code)async{
-  final respuesta = await http.get('https://thevirustracker.com/free-api?global=stats');
+var debug;
+
+Future<Country> cargarCountryList()async{
+  final respuesta = await http.get('https://thevirustracker.com/free-api?countryTotals=ALL');
 
   if(respuesta.statusCode == 200){
-    Global post = Global.fromJson(json.decode(respuesta.body));
-    return post;
+    return (json.decode(respuesta.body) as List).map((post) => Country.fromJson(post)).toList();
   }else{
     throw Exception('Error al cargar los datos');
   }
 }
 
-class topCountries extends StatelessWidget {
-  Widget renderizar(BuildContext context, AsyncSnapshot<List<Post>> snapshot) {
-    /*if (snapshot.hasError) {
-      return Text('Error!');
-    } else if (snapshot.hasData) {
+class Countries extends StatelessWidget {
+  Widget topCountries(BuildContext context, AsyncSnapshot<List<Country>> snapshot) {
+    if(snapshot.hasError){
+      print(snapshot.error);
+      return Text('Error');
+    }else if(snapshot.hasData){
+      //print('Longitud lista: '+snapshot.data.length.toString());
+      print(snapshot.data);
       return ListView.separated(
-        itemCount: snapshot.data.length,
-        separatorBuilder: (context, i) {
-          return Divider(); //Se puede ponder cualquier cosa
+        itemCount: 2,
+        separatorBuilder: (context, i){
+          return Divider();
         },
-        itemBuilder: (context, i) {
-          final Post post = snapshot.data[i];
+        itemBuilder: (context, i){
           return ListTile(
-            leading: Text(post.id.toString()), //principio
-            //trailing para el final
-            title: Text(post.title),
-            onTap: () { //Al pulsar
-              return Navigator
-                  .push( //push empuja una nueva ventana y pop vuelve atras, dos parametros
-                context, //context porque si
-                //Envia a postdetails
-                MaterialPageRoute(builder: (context) => PostDetails(post)),
-              );
-            },
+            leading: Text('Holi'),
           );
         },
       );
-    } else {
+    }else{
       return CircularProgressIndicator();
-    }*/
+    }
   }
 
   @override

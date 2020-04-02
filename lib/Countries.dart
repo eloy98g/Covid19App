@@ -11,10 +11,25 @@ Future<Country> cargarCountryList()async{
   final respuesta = await http.get('https://thevirustracker.com/free-api?countryTotals=ALL');
 
   if(respuesta.statusCode == 200){
-    return (json.decode(respuesta.body) as List).map((post) => Country.fromJson(post)).toList();
+    Country post = Country.fromJson(json.decode(respuesta.body));
+    return post;
   }else{
     throw Exception('Error al cargar los datos');
   }
+
+  /*void iterateJson(String jsonStr) {
+    Map<String, dynamic> myMap = json.decode(respuesta.body);
+    List<dynamic> entitlements = myMap["Dependents"][0]["Entitlements"];
+    entitlements.forEach((entitlement) {
+      (entitlement as Map<String, dynamic>).forEach((key, value) {
+        print(key);
+        (value as Map<String, dynamic>).forEach((key2, value2) {
+          print(key2);
+          print(value2);
+        });
+      });
+    });
+  }*/
 }
 
 class Countries extends StatelessWidget {

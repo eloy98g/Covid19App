@@ -18,26 +18,6 @@ class Global{
   }
 }
 
-class Country{
-  //final Sitedata sitedata;
-  final List<CountryItems> countryitems;
-
-  Country({
-    //this.sitedata,
-    this.countryitems
-  });
-
-  factory Country.fromJson(Map<String, dynamic> json){
-    var list = json['countryitems'] as List;
-    List<CountryItems> resultsList = list.map((i) => CountryItems.fromJson(i)).toList();
-
-    return Country(
-      countryitems: resultsList,
-      //sitedata: Sitedata.fromJson(json['sitedata']),
-    );
-  }
-}
-
 class Results{
   final int totalCases;//
   final int total_recovered;
@@ -72,6 +52,27 @@ class Results{
       total_active_cases: json['total_active_cases'],
       total_serius_cases: json['total_serius_cases'],
       //source: Source.fromJson(json['source']),
+    );
+  }
+}
+
+
+class Country{
+  //final Sitedata sitedata;
+  final List<CountryItems> countryitems;
+
+  Country({
+    //this.sitedata,
+    this.countryitems
+  });
+
+  factory Country.fromJson(Map<String, dynamic> json){
+    var list = json['countryitems'] as List;
+    List<CountryItems> resultsList = list.map((i) => CountryItems.fromJson(i)).toList();
+
+    return Country(
+      countryitems: resultsList,
+      //sitedata: Sitedata.fromJson(json['sitedata']),
     );
   }
 }
@@ -122,7 +123,7 @@ class CountryItems{
     );
   }
 }
-
+/*
 class Sitedata{
 
   final Info info;
@@ -151,7 +152,7 @@ class Info{
     );
   }
 }
-/*
+
 class Countrynewsitems {
   final String newsid;
   final String title;
@@ -176,4 +177,6 @@ class Countrynewsitems {
       url: json['url'],
     );
   }
-}*/
+}
+
+ */

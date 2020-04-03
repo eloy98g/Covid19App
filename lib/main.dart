@@ -44,13 +44,9 @@ class Inicio extends StatelessWidget {
                 future: cargarGlobal(),
               )
             ),
-            Divider(
-              color: Colors.black,
-              height: 3,
-              thickness:3,
-            ),
+
             Expanded(
-                child: FutureBuilder<List<Country>>(
+                child: FutureBuilder<Country>(
                   builder: Countries().topCountries,
                   future: cargarCountryList(),
                 )

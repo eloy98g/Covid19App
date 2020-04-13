@@ -25,6 +25,7 @@ class CountryData {
   String total_serius_cases;
 
   CountryData(
+    this.id,
     this.ourid,
     this.title,
     this.code,
@@ -38,6 +39,66 @@ class CountryData {
     this.total_active_cases,
     this.total_serius_cases,
   );
+}
+
+/*
+class _UploadImage extends State<Inicio>{
+  List<CountryData> countries = List();
+  Future<String> loadFromAssets() async {
+    return await http.get('https://api.thevirustracker.com/free-api?countryTotals=ALL').toString();
+  }
+
+  @override
+  loadYourData() async {
+    String jsonString = await loadFromAssets();
+    final corona2 = CountryFromJson(jsonString);
+
+    for (int i = 0; i < corona2.countries.length; i++) {
+      corona2.countries[i].forEach((key, value) {
+        print(value.title);
+        countries.add(CountryData(
+            key,
+            value.ourid.toString(),
+            value.title,
+            value.code,
+            value.source,
+            value.totalCases.toString(),
+            value.total_recovered.toString(),
+            value.total_unresolved.toString(),
+            value.total_deaths.toString(),
+            value.total_new_cases_today.toString(),
+            value.total_new_deaths_today.toString(),
+            value.total_active_cases.toString(),
+            value.total_serius_cases.toString()
+        ));
+      });
+    }
+    print('This is the coutries data ${countries.length}');
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.separated(
+      itemCount: countries.length,
+      separatorBuilder: (context, i){
+        return Divider();//Se puede ponder cualquier cosa
+      },
+      itemBuilder: (context, i){
+        return ListTile(
+          leading: Text(countries[i].code),//principio
+          //trailing para el final
+          title: Text(countries[i].title),
+          /*onTap: (){//Al pulsar
+              return Navigator.push(//push empuja una nueva ventana y pop vuelve atras, dos parametros
+                context,//context porque si
+                //Envia a postdetails
+                MaterialPageRoute(builder: (context) => PostDetails(post)),
+              );
+            },*/
+        );
+      },
+    );
+  }
 }
 
 Future<List<CountryData>> loadCountries()async{
@@ -54,18 +115,19 @@ Future<List<CountryData>> loadCountries()async{
       Country.countries[i].forEach((key, value) {
         print(value.title);
         countries.add(CountryData(
-            key,
-            value.ourid.toString(),
-            value.title,
-            value.code,
-            value.source,
-            value.totalCases.toString(),
-            value.total_recovered.toString(),
-            value.total_unresolved.toString(),
-            value.total_deaths.toString(),
-            value.total_new_cases_today.toString(),
-            value.total_new_deaths_today.toString(),
-            value.total_serius_cases.toString()
+          key,
+          value.ourid.toString(),
+          value.title,
+          value.code,
+          value.source,
+          value.totalCases.toString(),
+          value.total_recovered.toString(),
+          value.total_unresolved.toString(),
+          value.total_deaths.toString(),
+          value.total_new_cases_today.toString(),
+          value.total_new_deaths_today.toString(),
+          value.total_active_cases.toString(),
+          value.total_serius_cases.toString()
         ));
       });
     }
@@ -75,7 +137,7 @@ Future<List<CountryData>> loadCountries()async{
     print('NO HE ENTRADO');
     throw Exception('Error al cargar los datos');
   }
-}
+}*/
 
 @override
 class CountriesStats extends StatelessWidget{

@@ -104,25 +104,17 @@ String CountryToJson(Country data) => json.encode(data.toJson());
 
 class Country {
     List<Map<String, CountryItems>> countries;
-    //String dt;
-    //double ts;
 
     Country({
         this.countries,
-        //this.dt,
-        //this.ts,
     });
 
     factory Country.fromJson(Map<String, dynamic> json) => Country(
         countries: List<Map<String, CountryItems>>.from(json["countryitems"].map((x) => Map.from(x).map((k, v) => MapEntry<String, CountryItems>(k, CountryItems.fromJson(v))))),
-        //dt: json["dt"],
-        //ts: json["ts"],
     );
 
     Map<String, dynamic> toJson() => {
         "countryitems": List<dynamic>.from(countries.map((x) => Map.from(x).map((k, v) => MapEntry<String, dynamic>(k, v.toJson())))),
-        //"dt": dt,
-        //"ts": ts,
     };
 }
 

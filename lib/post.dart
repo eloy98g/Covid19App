@@ -56,33 +56,12 @@ class Results{
   }
 }
 
-/*
 class Country{
-  //final Sitedata sitedata;
-  final List<CountryItems> countryitems;
-
-  Country({
-    //this.sitedata,
-    this.countryitems
-  });
-
-  factory Country.fromJson(Map<String, dynamic> json){
-    var list = json['countryitems'] as List;
-    List<CountryItems> resultsList = list.map((i) => CountryItems.fromJson(i)).toList();
-
-    return Country(
-      countryitems: resultsList,
-      //sitedata: Sitedata.fromJson(json['sitedata']),
-    );
-  }
-}
-
-class CountryItems{
   final int ourid;
   final String title;
   final String code;
   final String source;
-  final int totalCases;//
+  final int total_cases;
   final int total_recovered;
   final int total_unresolved;
   final int total_deaths;
@@ -91,12 +70,12 @@ class CountryItems{
   final int total_active_cases;
   final int total_serius_cases;
 
-  CountryItems({
+  Country({
     this.ourid,
     this.title,
     this.code,
     this.source,
-    this.totalCases,
+    this.total_cases,
     this.total_recovered,
     this.total_unresolved,
     this.total_deaths,
@@ -106,13 +85,13 @@ class CountryItems{
     this.total_serius_cases,
   });
 
-  factory CountryItems.fromJson(Map<String, dynamic> json){
-    return CountryItems(
+  factory Country.fromJson(Map<String, dynamic> json){
+    return Country(
       ourid: json['ourid'],
       title: json['title'],
       code: json['code'],
       source: json['source'],
-      totalCases: json['total_cases'],
+      total_cases: json['total_cases'],
       total_recovered: json['total_recovered'],
       total_unresolved: json['total_unresolved'],
       total_deaths: json['total_deaths'],
@@ -123,60 +102,3 @@ class CountryItems{
     );
   }
 }
-
-class Sitedata{
-
-  final Info info;
-
-  Sitedata({
-    this.info
-  });
-
-  factory Sitedata.fromJson(Map<String, dynamic> json){
-    return Sitedata(
-      info: Info.fromJson(json['info']),
-    );
-  }
-}
-
-class Info{
-  final String source;
-
-  Info({
-    this.source
-  });
-
-  factory Info.fromJson(Map<String, dynamic> json){
-    return Info(
-      source: json['source'],
-    );
-  }
-}
-
-class Countrynewsitems {
-  final String newsid;
-  final String title;
-  final String image;
-  final String time;
-  final String url;
-
-  Countrynewsitems({
-   this.newsid,
-   this.title,
-   this.image,
-   this.time,
-   this.url
-  });
-
-  factory Countrynewsitems.fromJson(Map<String, dynamic> json){
-    return Countrynewsitems(
-      newsid: json['newsid'],
-      title: json['title'],
-      image: json['image'],
-      time: json['time'],
-      url: json['url'],
-    );
-  }
-}
-
- */

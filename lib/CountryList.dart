@@ -1,45 +1,41 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:covidapp/post.dart';
 import 'package:http/http.dart' as http;
-import 'package:covidapp/countryClass.dart';
 import 'package:flag/flag.dart';
 import 'package:flutter/services.dart';
 import 'dart:async' show Future;
+import 'package:flutter/services.dart' show rootBundle;
 
-Future<Country> cargarCountryList()async{
-  final respuesta = await http.get('https://thevirustracker.com/free-api?countryTotals=ALL');
+import 'dart:async' show Future;
 
-  if(respuesta.statusCode == 200){
-    Country post = Country.fromJson(json.decode(respuesta.body));
-    return post;
-  }else{
-    throw Exception('Error al cargar los datos');
-  }
+Future<List<Country>> cargarCountryList()async{
+  print('1');
+  String respuesta = await rootBundle.loadString('data/countryTotals.json');
+  print('2');
+  return (json.decode(respuesta) as List).map((post) => Country.fromJson(post)).toList();
+
 }
 
 
 @override
 class CountryList extends StatelessWidget{
-  Widget rendCountriesStats(BuildContext context, AsyncSnapshot<Country> snapshot) {
+  Widget rendCountriesStats(BuildContext context, AsyncSnapshot<List<Country>> snapshot) {
     if(snapshot.hasError){
+      print(snapshot.error.toString());
       return Text('Error!');
     }else if(snapshot.hasData){
-      Country block = snapshot.data;
-      var pais = 'the';
       return ListView.separated(
-        itemCount: block.CountryItems.length,
+        itemCount: snapshot.data.length,
         separatorBuilder: (context, i){
           return Divider();//Se puede ponder cualquier cosa
         },
         itemBuilder: (context, i){
-          pais = pais + i.toString();
-          var code = ('block.CountryItems[1].'+pais+'.code');
-          var titulo = ('block.CountryItems[1].'+pais+'.title');
-          print('Pais:'+pais);
+          final Country post = snapshot.data[i];
           return ListTile(
-            leading: Text(titulo),//principio
+            leading: Text(post.code),//principio
             //trailing para el final
-            title: Text(code),
+            title: Text(post.title),
             /*onTap: (){//Al pulsar
               return Navigator.push(//push empuja una nueva ventana y pop vuelve atras, dos parametros
                 context,//context porque si

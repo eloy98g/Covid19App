@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:covidapp/post.dart';
-import 'package:covidapp/countryClass.dart';
 import 'package:covidapp/GlobalStats.dart';
 import 'package:covidapp/CountryList.dart';
 
@@ -45,7 +44,7 @@ class Inicio extends StatelessWidget {
             ),
 
             Expanded(
-                child: FutureBuilder<Country>(
+                child: FutureBuilder<List<Country>>(
                   builder: CountryList().rendCountriesStats,
                   future: cargarCountryList(),
                 )

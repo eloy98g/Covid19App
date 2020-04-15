@@ -45,7 +45,10 @@ class Inicio extends StatelessWidget {
             ),
 
             Expanded(
-
+                child: FutureBuilder<Country>(
+                  builder: CountryList().rendCountriesStats,
+                  future: cargarCountryList(),
+                )
             )
           ],
         )

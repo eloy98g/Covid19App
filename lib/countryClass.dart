@@ -97,7 +97,8 @@ class CountryItems{
 }
 */
 
-
+//////////////////////////////////
+/*
 Country CountryFromJson(String str) => Country.fromJson(json.decode(str));
 
 String CountryToJson(Country data) => json.encode(data.toJson());
@@ -180,6 +181,7 @@ class CountryItems {
     };
 
 }
+*/
 
 
 
@@ -191,7 +193,6 @@ class CountryItems {
 
 
 
-/*
 Country CountryFromJson(String str) => Country.fromJson(json.decode(str));
 
 String CountryToJson(Country data) => json.encode(data.toJson());
@@ -1050,4 +1051,4 @@ class Info {
   Map<String, dynamic> toJson() => {
     "source": source,
   };
-}*/
+}

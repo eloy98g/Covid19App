@@ -29,11 +29,12 @@ dependencies:
   cupertino_icons: ^0.1.2
 
 assets:
-  - data/countryTotals.json
+  - data/countryTotals.txt
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  path_provider: ^0.4.1
 
 
 # For information on the generic Dart part of this file, see the

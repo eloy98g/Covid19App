@@ -6,15 +6,13 @@ import 'package:flag/flag.dart';
 import 'package:flutter/services.dart';
 import 'dart:async' show Future;
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:path_provider/path_provider.dart';
+import 'dart:io';
 
-import 'dart:async' show Future;
+
 
 Future<List<Country>> cargarCountryList()async{
-  print('1');
-  String respuesta = await rootBundle.loadString('data/countryTotals.json');
-  print('2');
-  return (json.decode(respuesta) as List).map((post) => Country.fromJson(post)).toList();
-
+  return (json.decode(prueba) as List).map((post) => Country.fromJson(post)).toList();
 }
 
 
@@ -56,3 +54,5 @@ class CountryList extends StatelessWidget{
     return null;
   }
 }
+
+String prueba = '[{"ourid":1,"title":"Afghanistan","code":"AF","source":"https://thevirustracker.com/afghanistan-coronavirus-information-af","total_cases":784,"total_recovered":43,"total_unresolved":0,"total_deaths":25,"total_new_cases_today":70,"total_new_deaths_today":2,"total_active_cases":716,"total_serious_cases":0},{"ourid":2,"title":"Spain","code":"ES","source":"https://thevirustracker.com/afghanistan-coronavirus-information-af","total_cases":784,"total_recovered":43,"total_unresolved":0,"total_deaths":25,"total_new_cases_today":70,"total_new_deaths_today":2,"total_active_cases":716,"total_serious_cases":0},{"ourid":3,"title":"China","code":"CH","source":"https://thevirustracker.com/afghanistan-coronavirus-information-af","total_cases":784,"total_recovered":43,"total_unresolved":0,"total_deaths":25,"total_new_cases_today":70,"total_new_deaths_today":2,"total_active_cases":716,"total_serious_cases":0},{"ourid":4,"title":"EEUU","code":"EU","source":"https://thevirustracker.com/afghanistan-coronavirus-information-af","total_cases":784,"total_recovered":43,"total_unresolved":0,"total_deaths":25,"total_new_cases_today":70,"total_new_deaths_today":2,"total_active_cases":716,"total_serious_cases":0},{"ourid":5,"title":"Italia","code":"IT","source":"https://thevirustracker.com/afghanistan-coronavirus-information-af","total_cases":784,"total_recovered":43,"total_unresolved":0,"total_deaths":25,"total_new_cases_today":70,"total_new_deaths_today":2,"total_active_cases":716,"total_serious_cases":0}, {"ourid":6,"title":"Francia","code":"FR","source":"https://thevirustracker.com/afghanistan-coronavirus-information-af","total_cases":784,"total_recovered":43,"total_unresolved":0,"total_deaths":25,"total_new_cases_today":70,"total_new_deaths_today":2,"total_active_cases":716,"total_serious_cases":0}]';

@@ -1,7 +1,4 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'package:covidapp/post.dart';
 import 'package:covidapp/GlobalStats.dart';
 import 'package:covidapp/CountryList.dart';
@@ -30,26 +27,35 @@ class Inicio extends StatelessWidget {
         appBar: AppBar(
           title: Text('CoVid-19 App'),
           centerTitle: true,
-          backgroundColor: Colors.green,
+          backgroundColor: Colors.teal,
         ),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Expanded(
-              child: FutureBuilder<Global>(
-                builder: GlobalStats().rendGlobalStats,
-                future: cargarGlobal(),
-              )
-            ),
-
-            Expanded(
-                child: FutureBuilder<List<Country>>(
-                  builder: CountryList().rendCountriesStats,
-                  future: cargarCountryList(),
-                )
+        body: Container(
+          decoration: new BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.blue, Colors.blue[800]],
+              stops: [0.5, 0.8],
+              begin: FractionalOffset.topCenter,
+              end: FractionalOffset.bottomCenter,
             )
-          ],
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Expanded(
+                  child: FutureBuilder<Global>(
+                    builder: GlobalStats().rendGlobalStats,
+                    future: cargarGlobal(),
+                  )
+              ),
+              Expanded(
+                  child: FutureBuilder<List<Country>>(
+                    builder: CountryList().rendCountriesStats,
+                    future: cargarCountryList(),
+                  )
+              ),
+            ],
+          )
         )
     );
   }

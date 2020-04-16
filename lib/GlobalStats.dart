@@ -39,11 +39,12 @@ class GlobalStats extends StatelessWidget{
           ),
         ),
         Expanded(
-          child: Column(
-            children: [
-              TextSlotGlobal(text, color),
-            ],
-          ),
+          child:
+            Column(
+              children: [
+                TextSlotGlobal(text, color),
+              ],
+            ),
         ),
       ],
     );
@@ -53,29 +54,31 @@ class GlobalStats extends StatelessWidget{
       String botText, Color color, bool CompleteRow) {
     if (CompleteRow == false) {
       return Container(
-        padding: new EdgeInsets.all(15.0),
-        decoration: BoxDecoration(
-          border: Border(bottom: BorderSide(width: 1.0)),
-          color: Colors.cyan[100],),
+        //padding: new EdgeInsets.all(15.0),
+        //margin: EdgeInsets.all(8.0),
+
         child: Container(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Expanded(
                   child: Container(
+                    color: Color.fromRGBO(253, 245, 243, 0.3),
+                    padding: new EdgeInsets.all(15.0),
+                    margin: EdgeInsets.all(8.0),
                     child: SlotGlobal(topData, topText, color),
-                      decoration: BoxDecoration(
-                        border: Border(right: BorderSide(width: 1.0))
-                      ),
                   )
               ),
-              Divider(
+              /*Divider(
                 color: Colors.black,
                 height: 3,
                 thickness:3,
-              ),
+              ),*/
               Expanded(
                   child: Container(
+                    color: Color.fromRGBO(253, 245, 243, 0.3),
+                    padding: new EdgeInsets.all(15.0),
+                    margin: EdgeInsets.all(8.0),
                     child: SlotGlobal(botData, botText, color),
                   )
               ),
@@ -85,8 +88,9 @@ class GlobalStats extends StatelessWidget{
       );
     } else {
       return Container(
-        decoration: BoxDecoration(color: Colors.cyan[100],),
+        color: Color.fromRGBO(253, 245, 243, 0.3),
         padding: new EdgeInsets.all(15.0),
+        margin: EdgeInsets.all(8.0),
         child: Container(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -117,7 +121,7 @@ class GlobalStats extends StatelessWidget{
               'GLOBAL INFECTED',
               '+' + post.results[0].total_new_cases_today.toString(),
               'CASES TODAY',
-              Colors.blue,
+              Colors.black,
               false,
             ),
           ),
@@ -127,7 +131,7 @@ class GlobalStats extends StatelessWidget{
               'GLOBAL DEATHS',
               '+' + post.results[0].total_new_deaths_today.toString(),
               'DEATHS TODAY',
-              Colors.red,
+              Colors.black,
               false,
             ),
           ),
@@ -137,7 +141,7 @@ class GlobalStats extends StatelessWidget{
               'TOTAL RECOVERED',
               '',
               '',
-              Colors.green,
+              Colors.black,
               true,
             ),
           ),

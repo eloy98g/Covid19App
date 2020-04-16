@@ -5,7 +5,6 @@ import 'package:covidapp/CountryList.dart';
 import 'package:covidapp/post.dart';
 import 'package:covidapp/GlobalStats.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
-import 'package:syncfusion_flutter_charts/charts.dart';
 
 class CountryDetails extends StatelessWidget{
   final Country post;
@@ -71,9 +70,9 @@ class CountryDetails extends StatelessWidget{
             ),
             Expanded(
               child: Container(
-                  color: Color.fromRGBO(253, 245, 243, 0.3),
-                  padding: new EdgeInsets.all(15.0),
-                  margin: EdgeInsets.all(8.0),
+                color: Color.fromRGBO(253, 245, 243, 0.3),
+                padding: new EdgeInsets.all(15.0),
+                margin: EdgeInsets.all(8.0),
                 child: dailyChart()
               ),
             ),
@@ -101,7 +100,16 @@ class dailyChart extends StatelessWidget{
         colorFn: (_, __) => charts.MaterialPalette.black,
       )
     ];
-    return charts.BarChart(series, animate: true);
+    return Container(
+      child: Column(
+        children: <Widget>[
+          Text("New daily cases"),
+          Expanded(
+            child: charts.BarChart(series, animate: true)
+          )
+        ]
+      )
+    );
   }
 }
 

@@ -17,9 +17,7 @@ class Aplicacion extends StatelessWidget{
     );
   }
 }
-/*TODO: El estilo será un fondo azul opaco oscuro y los items de Global tendrán un background
-   de gris transparente, el widget de topCountries será una lista blanca
-*/
+
 class Inicio extends StatelessWidget {
   @override
   Widget build(BuildContext context){
@@ -27,13 +25,13 @@ class Inicio extends StatelessWidget {
       appBar: AppBar(
         title: Text('CoVid-19 App'),
         centerTitle: true,
-        backgroundColor: Colors.teal,
+        backgroundColor: Colors.teal[600],
       ),
       body: Container(
         decoration: new BoxDecoration(
           gradient: LinearGradient(
-            colors: [Colors.blue, Colors.blue[800]],
-            stops: [0.5, 0.8],
+            colors: [Colors.blue, Colors.blue[900]],
+            stops: [0.2, 0.9],
             begin: FractionalOffset.topCenter,
             end: FractionalOffset.bottomCenter,
           )

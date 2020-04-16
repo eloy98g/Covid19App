@@ -34,6 +34,8 @@ assets:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  charts_flutter: ^0.9.0
+  syncfusion_flutter_charts: ^17.3.26
   path_provider: ^0.4.1
 
 

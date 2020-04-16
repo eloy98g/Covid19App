@@ -102,3 +102,33 @@ class Country{
     );
   }
 }
+
+class DateData{
+  final String date;
+  final int new_daily_cases;
+  final int new_daily_deaths;
+  final int total_cases;
+  final int total_recoveries;
+  final int total_deaths;
+
+  DateData({
+    this.date,
+    this.new_daily_cases,
+    this.new_daily_deaths,
+    this.total_cases,
+    this.total_recoveries,
+    this.total_deaths,
+  });
+
+  factory DateData.fromJson(Map<String, dynamic> json){
+    return DateData(
+      date: json["date"],
+      new_daily_cases: json["new_daily_cases"],
+      new_daily_deaths: json["new_daily_deaths"],
+      total_cases: json["total_cases"],
+      total_recoveries: json["total_recoveries"],
+      total_deaths: json["total_deaths"],
+    );
+  }
+}
+

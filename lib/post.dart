@@ -56,6 +56,8 @@ class Results{
   }
 }
 
+/////////////////////////////////////
+
 class Country{
   final int ourid;
   final String title;
@@ -131,4 +133,7 @@ class DateData{
     );
   }
 }
+
+//////////////////////////////////////////////
+
 

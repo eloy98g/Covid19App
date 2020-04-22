@@ -118,7 +118,7 @@ class GlobalStats extends StatelessWidget{
           Expanded(
             child: DoubleSlotGlobal(
               post.results[0].totalCases.toString(),
-              'GLOBAL INFECTED',
+              'GLOBAL CASES',
               '+' + post.results[0].total_new_cases_today.toString(),
               'CASES TODAY',
               Colors.black,

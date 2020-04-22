@@ -41,10 +41,10 @@ class Inicio extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Expanded(
-                child: FutureBuilder<Global>(
-                  builder: GlobalStats().rendGlobalStats,
-                  future: cargarGlobal(),
-                )
+              child: FutureBuilder<Global>(
+                builder: GlobalStats().rendGlobalStats,
+                future: cargarGlobal(),
+              )
             ),
             Expanded(
                 child: FutureBuilder<List<Country>>(

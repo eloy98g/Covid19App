@@ -147,12 +147,18 @@ class GlobalStats extends StatelessWidget{
           ),
         ],
       );
-    } else {
-      return CircularProgressIndicator(//TODO: ponerlo pequeño
+    }else {
+      return Center(
+        child: Container(
+          height: 20,
+          width: 20,
+          child: CircularProgressIndicator(
+            valueColor: new AlwaysStoppedAnimation<Color>(Colors.white),
+          ),
+        )
       );
     }
   }
-
   @override
   Widget build(BuildContext context) {
     // TODO: implement build

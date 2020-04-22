@@ -34,7 +34,6 @@ class CountryList extends StatelessWidget{
           },
           itemBuilder: (context, i){
             final Country post = snapshot.data[i];
-            //Image.asset('icons/flags/xx.png', package: 'country_icons');
             return ListTile(
               leading: Container(
                 decoration: BoxDecoration(
@@ -55,7 +54,13 @@ class CountryList extends StatelessWidget{
         )
       );
     }else{
-      return CircularProgressIndicator();
+      return Center(
+          child: Container(
+            height: 20,
+            width: 20,
+            child: CircularProgressIndicator(),
+          )
+      );
     }
   }
   //child: Flags.getMiniFlag(post.code, null, null)

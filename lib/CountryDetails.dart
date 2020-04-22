@@ -89,7 +89,6 @@ class Info {
       source: json['source'],
     );
   }
-
 }
 
 
@@ -195,7 +194,13 @@ class CountryDetails extends StatelessWidget{
           )
       );
     }else{
-      return CircularProgressIndicator();
+      return Center(
+          child: Container(
+            height: 20,
+            width: 20,
+            child: CircularProgressIndicator(),
+          )
+      );
     }
   }
 }
